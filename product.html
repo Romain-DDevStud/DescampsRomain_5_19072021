@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/195db9683a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css_frontend/style.css">
-    <title>Orinoco - Page d'accueil de votre site e-commerce</title>
+    <title>Orinoco - Page produit de votre site e-commerce</title>
 </head>
 <body>
     <div class="body__bkg">
@@ -17,7 +17,10 @@
             <nav class="navbar__menu">
                 <ul>
                     <li>
-                        <a href="">Panier <i class="fas fa-shopping-basket"></i></a> <!--Lien vers page Panier à insérer-->
+                        <a href="index.html">Accueil<i class="fas fa-home"></i></a>
+                    </li>
+                    <li>
+                        <a href="">Panier<i class="fas fa-shopping-basket"></i></a> <!--Lien vers page Panier à insérer-->
                     </li>
                 </ul>
             </nav>
@@ -26,10 +29,10 @@
             <h1 class="main__title">
                 Découvrez notre gamme de caméras vintage !
             </h1>
-            <section class="product__list"> <!--Liste présentant les produits-->
+            <section class="product__list">
                 <template id="article">
-                    <article class="product__id"> <!--Vignette de produit-->
-                        <a href="" class="product__URL"> <!--Lien vers page Produit à insérer-->
+                    <article class="product__id">
+                        <a href="" class="product__URL">
                             <figure>
                                 <img src="" class="product__img" alt="">
                                 <figcaption>
@@ -40,7 +43,7 @@
                             </figure>
                         </a>
                     </article>
-                </template>
+                </template>    
             </section>
         </main>
         <footer class="wrapper">
@@ -54,6 +57,6 @@
             </ul>
         </footer>
     </div>
-    <script src="./js_frontend/index.js"></script>
+    <script src="./js_frontend/product.js"></script>
 </body>
 </html>
