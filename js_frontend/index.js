@@ -18,7 +18,7 @@ function getArticles() {
             for (const article of articles){ // Récupération des informations produits
                 let clone = document.importNode(template.content, true);
                 let url = clone.querySelector(".product__URL");
-                url.href = "../product.html?id=" + article._id;
+                url.href = "../DescampsRomain_5_19072021/product.html?id=" + article._id;
                 let image = clone.querySelector(".product__img");
                 image.src = article.imageUrl;
                 let name = clone.querySelector(".product__name");

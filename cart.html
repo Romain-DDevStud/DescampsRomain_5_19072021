@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/195db9683a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css_frontend/style.css">
+    <title>Orinoco - Récapitulatif de votre panier</title>
+</head>
+<body>
+    <div class="body_bkg">
+        <header class="wrapper navbar">
+            <a href="./index.html" class="navbar__brand">
+                <img src="./images_frontend/Logo_Orinoco.png" alt="Logo Orinoco">
+            </a>
+            <nav class="navbar__menu">
+                <ul>
+                    <li>
+                        <a href="./index.html">Accueil<i class="fas fa-home"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main wrapper">
+            <h1 class="main__title">
+                Votre panier : 
+            </h1>
+            <section class="recap-table wrapper"> <!--Section contenant le résumé du panier-->
+                <h2 class="table__title">
+                    Récapitutalif de votre commande :
+                </h2>
+                <table class="table__container">
+                    <thead>
+                        <tr class="table__grid">
+                            <th>Produit</th>
+                            <th>Option</th>
+                            <th>Quantité</th>
+                            <th>Prix</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td> <!--Nom produit-->
+                            <td></td> <!--Choix lentille-->
+                            <td></td> <!--Choix quantité-->
+                            <td></td> <!--Prix du produit-->
+                            <td></td> <!--Total pour le produit -->
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total : <span></span></td> <!--Récupération du total du panier dans ce span-->
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <section class="recap-data wrapper"> <!--Section pour formulaire-->
+                <h2 class="form__title">
+                    Vos coordonnées :
+                </h2>
+                <form class="grid-form">
+                    <div>
+                        <label class="form__label" for="firstName">Prénom</label>
+                        <input class="form__input" type="text" name="firstName">
+                    </div>
+                    <div>
+                        <label class="form__label" for="lastName">Nom</label>
+                        <input class="form__input" type="text" name="lastName">
+                    </div>
+                    <div>
+                        <label class="form__label" for="email">Adresse e-mail</label>
+                        <input class="form__input" type="text" name="email">
+                    </div>
+                    <div>
+                        <label class="form__label" for="address">Adresse</label>
+                        <input class="form__input" type="text" name="address">
+                    </div>
+                    <div>
+                        <label class="form__label" for="zipcode">Code postal</label>
+                        <input class="form__input" type="text" name="zipcode" pattern="[0-9]{5}">
+                    </div>
+                    <div>
+                        <label class="form__label" for="city">Ville</label>
+                        <input class="form__input" type="text" name="city">
+                    </div>
+                </form>
+                <button>Valider la commande</button>
+            </section>
+        </main>
+        <footer class="wrapper">
+            <ul class="footer__link">
+                <li>
+                    <a href="" class="footer__contact">Contact <i class="fas fa-envelope"></i></a>
+                </li>
+                <li>
+                    <a href="" class="footer__mentions">Mentions légales <i class="fas fa-file-alt"></i></a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+    <script></script>
+</body>
+</html>

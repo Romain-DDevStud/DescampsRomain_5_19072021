@@ -6,42 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/195db9683a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css_frontend/style.css">
-    <title>Orinoco - Page produit de votre site e-commerce</title>
+    <title>Orinoco - Présentation de votre produit</title>
 </head>
 <body>
     <div class="body__bkg">
         <header class="wrapper navbar">
-            <a href="index.html" class="navbar__brand">
+            <a href="./index.html" class="navbar__brand">
                 <img src="./images_frontend/Logo_Orinoco.png" alt="Logo Orinoco">
             </a>
             <nav class="navbar__menu">
                 <ul>
                     <li>
-                        <a href="index.html">Accueil<i class="fas fa-home"></i></a>
+                        <a href="./index.html">Accueil<i class="fas fa-home"></i></a> <!--Lien retour Homepage-->
                     </li>
                     <li>
-                        <a href="">Panier<i class="fas fa-shopping-basket"></i></a> <!--Lien vers page Panier à insérer-->
+                        <a href="./cart.html">Panier<span id="cart-notif"></span><i class="fas fa-shopping-basket"></i></a> <!--Lien vers page Panier-->
                     </li>
                 </ul>
             </nav>
         </header>
         <main class="main wrapper">
             <h1 class="main__title">
-                Découvrez notre gamme de caméras vintage !
+                Votre produit :
             </h1>
-            <section class="product__list">
-                <template id="article">
-                    <article class="product__id">
-                        <a href="" class="product__URL">
-                            <figure>
-                                <img src="" class="product__img" alt="">
-                                <figcaption>
-                                    <h2 class="product__name"></h2>
-                                    <span class="product__price"></span>
-                                    <p class="product__desc"></p>
-                                </figcaption>
-                            </figure>
-                        </a>
+            <section class="product-card__item">
+                <template id="product-card">
+                    <article class="product-card__id">
+                        <figure class="grid_2-1">
+                            <img src="" class="product-card__img" alt="">
+                            <figcaption class="grid_1-1">
+                                <h2 class="product-card__name"></h2>
+                                <p>Prix : <span class="product-card__price"></span></p>
+                                <p class="product-card__desc"></p>
+                                <label for="lentilles">Choisissez une lentille :</label>
+                                <select name="lentilles" id="lentilles" class="product-card__select"></select>
+                                <div class="product-card__quantity">
+                                    <label for="cameraQty">Quantité :</label>
+                                    <input id="cameraQty" type="number" name="cameraQty" value="1" min="1" max="10">
+                                </div>
+                                <div class="button-flex">
+                                    <button class="product-card__cartadd">Ajouter le produit au panier</button>
+                                    <button>
+                                        <a href="./cart.html">Accéder à votre panier</a>
+                                    </button>
+                                    <div class="center-self">
+                                        <a href="./index.html"><i class="fas fa-arrow-left"></i>Retour à l'accueil</a>
+                                    </div>
+                                </div>
+                            </figcaption>
+                        </figure>
                     </article>
                 </template>    
             </section>
