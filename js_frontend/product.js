@@ -47,6 +47,7 @@ function getArticles() {
             const cartAdd = document.querySelector(".product-card__cartadd");
             cartAdd.addEventListener("click", function() {
                 addToCart();
+                alert("Produit ajouté au panier");
             });
         })
         .catch(function(err){
@@ -54,13 +55,13 @@ function getArticles() {
 }
 // forcer "vider panier dans localStorage" refresh page pour remettre à zéro le tableau et relancer page (commenter/décommenter)
 //localStorage.clear();
-function addToCart() {
-    const option = document.getElementById("lentilles").value;
-    const quantity = document.getElementById("cameraQty").value;
-    const productInCart = {
+function addToCart() { //fonction ajout au panier
+    const option = document.getElementById("lentilles").value; // variable pour récupérer l'option de lentilles
+    const quantity = document.getElementById("cameraQty").value; //variable pour récupérer la quantité
+    const productInCart = { //variable clé-valeur pour localStorage
         "id": id, "option": option, "quantity": quantity
     };
-    let productsInStorage = localStorage.getItem("productsInStorage");
+    let productsInStorage = localStorage.getItem("productsInStorage"); // vérif de ce qu'il y a dans le localStorage, si produit absent, on l'ajoute, si présent, on modifie la quantité
     if (productsInStorage == null) {
         productsInStorage = [];
     } else {

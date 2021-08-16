@@ -50,8 +50,12 @@ button:hover {
 th {
     border: 1px solid black;
 }
+label {
+    margin-bottom: 5px;
+}
 input {
     border-radius: 5px;
+    padding: 5px;
 }
 input:focus {
     outline: transparent;

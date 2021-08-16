@@ -40,13 +40,13 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td></td> <!--Nom produit-->
-                            <td></td> <!--Choix lentille-->
-                            <td></td> <!--Choix quantité-->
-                            <td></td> <!--Prix du produit-->
-                            <td></td> <!--Total pour le produit -->
+                    <tbody class="product-recap__item">
+                        <tr class="table__grid">
+                            <td class="item-name"></td> <!--Nom produit-->
+                            <td class="item-option"></td> <!--Rappel du choix de la lentille effectué--> 
+                            <td class="item-qty"></td>  <!--Rappel de la quantité du produit choisie-->
+                            <td class="item-price"></td> <!--Prix du produit-->
+                            <td class="item-totalprice"></td> <!--Total pour le produit -->
                         </tr>
                     </tbody>
                     <tfoot>
@@ -86,7 +86,12 @@
                         <input class="form__input" type="text" name="city">
                     </div>
                 </form>
-                <button>Valider la commande</button>
+                <div class="button-flex">
+                    <button>Valider la commande</button>
+                    <div class="center-self">
+                        <a href="./index.html"><i class="fas fa-arrow-left"></i>Retour aux produits</a>
+                    </div>
+                </div>
             </section>
         </main>
         <footer class="wrapper">
@@ -100,6 +105,6 @@
             </ul>
         </footer>
     </div>
-    <script></script>
+    <script src="./js_frontend/cart.js"></script>
 </body>
 </html>
