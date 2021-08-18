@@ -40,18 +40,11 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody class="product-recap__item">
-                        <tr class="table__grid">
-                            <td class="item-name"></td> <!--Nom produit-->
-                            <td class="item-option"></td> <!--Rappel du choix de la lentille effectué--> 
-                            <td class="item-qty"></td>  <!--Rappel de la quantité du produit choisie-->
-                            <td class="item-price"></td> <!--Prix du produit-->
-                            <td class="item-totalprice"></td> <!--Total pour le produit -->
-                        </tr>
+                    <tbody id="product-recap__item">
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td>Total : <span></span></td> <!--Récupération du total du panier dans ce span-->
+                            <td id="affichageTotal"></td> <!--Récupération du total du panier dans ce span-->
                         </tr>
                     </tfoot>
                 </table>
