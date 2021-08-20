@@ -83,39 +83,4 @@ function addToCart() { //fonction ajout au panier
     let notif = document.getElementById("cart-notif");
     notif.innerHTML = " (" + cartNotif + ")";
 }
-/* à déplacer dans page Panier
-function loadProductInCart() {
-    let productsInStorage = localStorage.getItem("productsInStorage");
-    if (productsInStorage == null) {
-        console.log("pas de produit dans le panier");
-    } else {
-        productsInStorage = JSON.parse(productsInStorage);
-    }
-    productsInStorage.forEach(item => {
-        fetch(`http://localhost:3000/api/cameras/${item.id}`)
-            .then(function(res){
-                if (res.ok){
-                    return res.json();
-                }
-            })
-            .then(function(value){
-                const article = value;
-                let template = document.querySelector("#product-card");
-                let section = document.querySelector(".product-card__item");
-                let clone = document.importNode(template.content, true);
-                let name = clone.querySelector(".product-card__name");
-                name.innerHTML = article.name;
-                let price = clone.querySelector(".product-card__price");
-                price.innerHTML = article.price;
-                let desc = clone.querySelector(".product-card__desc");
-                desc.innerHTML = article.description;
-                let option = clone.querySelector(".product-card__select");
-                option.innerHTML = item.option;
-                let quantity = clone.querySelector(".product-card__quantity");
-                quantity = item.quantity;
-                section.appendChild(clone);
-            })
-            .catch(function(err){
-            });
-    });
-}*/
+

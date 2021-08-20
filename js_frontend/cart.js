@@ -1,49 +1,75 @@
-function recupLS () {
-    let productsInStorage = JSON.parse(localStorage.getItem("productsInStorage"));
-    let prixTotal = JSON.parse(localStorage.getItem("prixTotal"));
-    let prixPanier = document.getElementById("affichageTotal");
-    let tableauPanier = document.getElementById("product-recap__item");
+main()
 
-    if (prixTotal != null) {
-        let div = document.createElement("div");
-        product-recap__item.appendChild(div)
-        prixPanier.textContent = 'Le montant total de votre commande est de : ' + prixTotal + ' €';
-        prixPanier.id = 'prixTotal';
-    } else {
-        prixPanier.textContent = 'Le montant de votre commande est de : 0 €';
-    }
-
-    if (productsInStorage == null) {
-        let div = document.createElement("div")
-        tableauPanier.appendChild(div)
-        console.log("Le panier est vide")
-    } else {
-        tableauPanier.innerHTML = '';
-        Object.values(productsInStorage).map((camera) => {
-            let tr = document.createElement("tr");
-            tr.classList.add("table__grid");
-            let name = document.createElement("td");
-            let lenses = document.createElement("td");
-            let quantite = document.createElement("td");
-            let prix = document.createElement("td");
-            let prixTotalCam = document.createElement("td");
-
-            tableauPanier.appendChild(tr);
-            tr.appendChild(name);
-            tr.appendChild(lenses);
-            tr.appendChild(quantite);
-            tr.appendChild(prix);
-            tr.appendChild(prixTotalCam);
-
-            name.textContent = camera.id; //problème ici : reprendre name dans productsInStorage, mais la donnée n'y est pas
-            lenses.textContent = camera.option;
-            quantite.textContent = camera.quantity;
-            prix.textContent = camera.price / 100 + " €"; // ici
-            prixTotalCam.textContent = camera.price / 100 * camera.quantity + " €"; // et ici 
-        });    
-    }
-
+function main() {
+    loadProductInCart();
 }
-recupLS();
+function loadProductInCart() {
+    let productsInStorage = localStorage.getItem("productsInStorage");
+    if (productsInStorage == null) {
+        console.log("Pas de produit dans le panier");
+    } else {
+        productsInStorage = JSON.parse(productsInStorage);
+    }
+    let cartTotalPrice = 0;
+    let template = document.getElementById("recap-amount");
+    let section = document.querySelector(".table-total");
+    let clone = document.importNode(template.content, true);
+    let totalCommande = clone.querySelector(".cart-totalprice");
+    section.appendChild(clone);
+    productsInStorage.forEach(item => {
+        fetch(`http://localhost:3000/api/cameras/${item.id}`)
+            .then(function(res){
+                if (res.ok){
+                    return res.json();
+                }
+            })
+            .then(function(value){
+                const article = value;
+                let template = document.getElementById("recap-item");
+                let section = document.querySelector(".table-content");
+                let clone = document.importNode(template.content, true);
+                let name = clone.querySelector(".item-name");
+                name.innerHTML = article.name;
+                let price = clone.querySelector(".item-price");
+                price.innerHTML = item.price;
+                let option = clone.querySelector(".item-option");
+                option.innerHTML = item.option;
+                let quantity = clone.querySelector(".item-qty");
+                quantity.innerHTML = item.quantity;
+                let linePrice = parseInt(item.quantity) * parseInt(article.price) / 100;
+                let totalAmount = clone.querySelector(".item-totalprice");
+                totalAmount.innerHTML = new Intl.NumberFormat("fr-FR",{ 
+                    style: "currency",
+                    currency: "EUR",
+                    })
+                    .format(linePrice);
+                cartTotalPrice += parseInt(linePrice);
+                //console.log(cartTotalPrice);
+                section.appendChild(clone);
+                article.price = article.price / 100;
+                price.innerHTML = new Intl.NumberFormat("fr-FR",{ 
+                style: "currency",
+                currency: "EUR",
+                })
+                .format(article.price);
+                totalCommande.innerHTML = new Intl.NumberFormat("fr-FR",{ 
+                    style: "currency",
+                    currency: "EUR",
+                    })
+                    .format(cartTotalPrice);
+            })
+            .catch(function(err){
+            });           
+        });       
+}
+// supprimer contenu du panier
+const buttonEmptyCart = document.querySelector(".empty-cart");
+buttonEmptyCart.addEventListener("click", function() {
+    localStorage.clear();
+    alert("Panier vidé avec succès !");
+    history.go(0);
+});
+
+
 
 

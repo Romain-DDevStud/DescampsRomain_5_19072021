@@ -9,7 +9,7 @@
     <title>Orinoco - Récapitulatif de votre panier</title>
 </head>
 <body>
-    <div class="body_bkg">
+    <div class="body__bkg">
         <header class="wrapper navbar">
             <a href="./index.html" class="navbar__brand">
                 <img src="./images_frontend/Logo_Orinoco.png" alt="Logo Orinoco">
@@ -40,12 +40,32 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody id="product-recap__item">
+                    <tbody class="table-content">
+                        <template id="recap-item">
+                            <tr class="table__grid">
+                                <td class="item-name"></td> <!--Nom produit-->
+                                <td class="item-option">
+                                    <label for="lentilles"></label>
+                                    <select name="lentilles" id="lentilles" class="item-option__select"></select>
+                                </td> <!--Rappel du choix de la lentille effectué--> 
+                                <td class="item-qty">
+                                    <label for="itemQty"></label>
+                                    <input id="itemQty" type="number" name="itemQty" value="1" min="1" max="10">
+                                </td>  <!--Rappel de la quantité du produit choisie-->
+                                <td class="item-price"></td> <!--Prix du produit-->
+                                <td class="item-totalprice"></td> <!--Total pour le produit -->
+                            </tr>
+                        </template>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td id="affichageTotal"></td> <!--Récupération du total du panier dans ce span-->
-                        </tr>
+                    <tfoot class="table-total">
+                        <template id="recap-amount">
+                            <tr>
+                                <td>
+                                    <button class="button-flex empty-cart">Vider le panier</button>
+                                </td>
+                                <td>Total de la commande : <span class="cart-totalprice"></span></td> <!--Récupération du total du panier dans ce span-->
+                            </tr>
+                        </template>
                     </tfoot>
                 </table>
             </section>
@@ -56,27 +76,27 @@
                 <form class="grid-form">
                     <div>
                         <label class="form__label" for="firstName">Prénom</label>
-                        <input class="form__input" type="text" name="firstName">
+                        <input class="form__input" type="text" name="firstName" id="firstName">
                     </div>
                     <div>
                         <label class="form__label" for="lastName">Nom</label>
-                        <input class="form__input" type="text" name="lastName">
+                        <input class="form__input" type="text" name="lastName" id="lastName">
                     </div>
                     <div>
                         <label class="form__label" for="email">Adresse e-mail</label>
-                        <input class="form__input" type="text" name="email">
+                        <input class="form__input" type="text" name="email" id="email">
                     </div>
                     <div>
                         <label class="form__label" for="address">Adresse</label>
-                        <input class="form__input" type="text" name="address">
+                        <input class="form__input" type="text" name="address" id="address">
                     </div>
                     <div>
                         <label class="form__label" for="zipcode">Code postal</label>
-                        <input class="form__input" type="text" name="zipcode" pattern="[0-9]{5}">
+                        <input class="form__input" type="text" name="zipcode" pattern="[0-9]{5}" id="zipcode">
                     </div>
                     <div>
                         <label class="form__label" for="city">Ville</label>
-                        <input class="form__input" type="text" name="city">
+                        <input class="form__input" type="text" name="city" id="city">
                     </div>
                 </form>
                 <div class="button-flex">
