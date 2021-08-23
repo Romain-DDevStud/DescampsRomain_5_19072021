@@ -195,3 +195,16 @@ input:focus {
     align-items: center;
     margin-top: 15px;
 }
+.section__confirm {
+    margin: 30px auto;
+    background-color: var(--main-bkg_color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    padding: 10px 0 20px 0;
+}
+.commande-name {
+    padding: 5px 0;
+}
+.commande-ID span {
+    text-decoration: underline;
+}

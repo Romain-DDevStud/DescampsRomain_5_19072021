@@ -70,6 +70,71 @@ buttonEmptyCart.addEventListener("click", function() {
     history.go(0);
 });
 
+//variables pour envoi des infos clients
+let firstName = document.getElementById("firstName");
+let lastName = document.getElementById("lastName");
+let emailAddress = document.getElementById("email");
+let address = document.getElementById("address");
+let city = document.getElementById("city");
+let confirmButton = document.getElementById("order-confirm");
 
+//fonction pour créer objet général infos clients
+function infosClient (firstName, lastName, emailAddress, address, city) {
+    (this.firstName = firstName),
+    (this.lastName = lastName),
+    (this.emailAddress = emailAddress),
+    (this.address = address),
+    (this.city = city);
+}
+// création d'un tableau contenant le panier de commande 
+let productsInStorage = JSON.parse(localStorage.getItem("productsInStorage"));
+let listCartProduct = [];
 
+for (let i = 0; i < productsInStorage.length; i++) {
+    listCartProduct.push(productsInStorage[i].id);
+}    
 
+// fonction pour envoi données client
+function sendInfos() {
+    let newClient = new infosClient(
+        firstName.value,
+        lastName.value,
+        emailAddress.value,
+        address.value,
+        city.value,
+    );
+    fetch("http://localhost:3000/api/cameras/order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            contact: {
+                firstName: newClient.firstName,
+                lastName: newClient.lastName,
+                address: newClient.address,
+                city: newClient.city,
+                email: newClient.emailAddress,
+            },
+            products: listCartProduct,
+        }),
+    })
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+    })
+    .then((data) => {
+        localStorage.clear();
+        localStorage.setItem("orderInfos", JSON.stringify(data))
+        console.log(confirmButton);
+        window.location.replace(confirmButton.firstElementChild.href);
+    })    
+    .catch((error) => console.log("erreur de type : ", error));
+} 
+
+//event au clic validation commande
+confirmButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    sendInfos();
+})
