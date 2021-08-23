@@ -195,6 +195,10 @@ input:focus {
     align-items: center;
     margin-top: 15px;
 }
+.required {
+    color: red;
+    font-size: 1.2rem;
+}
 .section__confirm {
     margin: 30px auto;
     background-color: var(--main-bkg_color);

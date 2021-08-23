@@ -76,6 +76,7 @@ let lastName = document.getElementById("lastName");
 let emailAddress = document.getElementById("email");
 let address = document.getElementById("address");
 let city = document.getElementById("city");
+let validInfosButton = document.getElementById("valid-button");
 let confirmButton = document.getElementById("order-confirm");
 
 //fonction pour créer objet général infos clients
@@ -86,6 +87,40 @@ function infosClient (firstName, lastName, emailAddress, address, city) {
     (this.address = address),
     (this.city = city);
 }
+
+//fonction de validation des input infos client
+function validInput() {
+    let regexFirstName = /^[A-Z]{1}[A-Za-zÀ-ÿ\ -]+$/ 
+    let regexLastName = /^[A-Z]{1}[a-z\ ]+$/
+    let regexEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/
+    let regexAddress = /^[0-9]{1,4}[ ,-][ A-Za-zÀ-ÿ0-9\-]+$/
+    let regexCity = /^[A-Z]{1}[a-zA-Z\- ]+$/
+    if (firstName.value.length === 0 || !regexFirstName.test(firstName.value)) {
+        alert("Merci d'entrer un prénom valide.")
+        firstName.style.borderColor = "red"
+    } else if (lastName.value.length === 0 || !regexLastName.test(lastName.value)) {
+        alert("Merci d'entrer un nom valide.")
+        lastName.style.borderColor = "red"
+    } else if (emailAddress.value.length === 0 || !regexEmail.test(emailAddress.value)) {
+        alert("Merci d'entrer une adresse email valide")
+        emailAddress.style.borderColor = "red"
+    } else if (address.value.length === 0 || !regexAddress.test(address.value)) {
+        alert("Merci d'entrer une adresse valide.")
+        address.style.borderColor = "red"
+    } else if (city.value.length === 0 || !regexCity.test(city.value)) {
+        alert("Merci d'entrer une ville valide.")
+        city.style.borderColor = "red"
+    } else {
+        alert("Vous pouvez valider votre commande")
+        validInfosButton.classList.remove("disabled")
+    }
+}
+
+//event au clic de vérification des coordonnées
+validInfosButton.addEventListener("click", function(event){
+    validInput();
+})
+
 // création d'un tableau contenant le panier de commande 
 let productsInStorage = JSON.parse(localStorage.getItem("productsInStorage"));
 let listCartProduct = [];
