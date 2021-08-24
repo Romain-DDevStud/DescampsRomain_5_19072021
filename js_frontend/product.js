@@ -60,7 +60,8 @@ function addToCart() { //fonction ajout au panier
     const productInCart = { //variable clé-valeur pour localStorage
         "id": id, "option": option, "quantity": quantity,
     };
-    let productsInStorage = localStorage.getItem("productsInStorage"); // vérif de ce qu'il y a dans le localStorage, si produit absent, on l'ajoute, si présent, on modifie la quantité
+    // vérif de ce qu'il y a dans le localStorage, si produit absent, on l'ajoute, si présent, on modifie la quantité
+    let productsInStorage = localStorage.getItem("productsInStorage"); 
     if (productsInStorage == null) {
         productsInStorage = [];
     } else {

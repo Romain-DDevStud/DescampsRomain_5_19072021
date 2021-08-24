@@ -93,7 +93,7 @@ function infosClient (firstName, lastName, emailAddress, address, city) {
     (this.city = city);
 }
 
-//fonction de validation des input infos client
+//fonction de validation via Regex des input infos client
 function validInput() {
     let regexFirstName = /^[A-Z]{1}[A-Za-zÀ-ÿ\ -]+$/ 
     let regexLastName = /^[A-Z]{1}[a-z\ ]+$/
