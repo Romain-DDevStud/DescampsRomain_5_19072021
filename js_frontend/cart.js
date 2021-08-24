@@ -162,7 +162,7 @@ function sendInfos() {
     .then((data) => {
         localStorage.clear();
         localStorage.setItem("orderInfos", JSON.stringify(data));
-        const form = document.getElementById("form-info");
+        const form = document.getElementById("form-infos");
         window.location.replace(form.action);
     })  
     .catch((error) => console.log("erreur de type : ", error));
