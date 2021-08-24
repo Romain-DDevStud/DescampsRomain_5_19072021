@@ -9,7 +9,7 @@ function loadProductInCart() {
     if (productsInStorage == null) {
         console.log("Pas de produit dans le panier");
         let sectionForm = document.querySelector(".recap-data");
-        sectionForm.innerHTML = "<span>Votre panier est vide !</span>";
+        sectionForm.innerHTML = "<span id='empty-cart'>Votre panier est vide !</span>";
         return false;
     } else {
         productsInStorage = JSON.parse(productsInStorage);

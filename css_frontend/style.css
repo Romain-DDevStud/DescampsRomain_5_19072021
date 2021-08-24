@@ -165,7 +165,7 @@ input:focus {
     padding: 20px;
     border-radius: var(--border-radius);
 }
-.recap-data span {
+#empty-cart {
     display: block;
     text-align: center;
     font-size: 2rem;
