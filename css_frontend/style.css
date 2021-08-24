@@ -14,6 +14,7 @@ img {
 body {
     font-family:Arial, Helvetica, sans-serif;
     font-size: 14px;
+    height: 1000px;
 }
 a {
     text-decoration: none;
@@ -64,6 +65,7 @@ input:focus {
     background-image: url("../images_frontend/05a4d9b0648ea1351cab4d8b777d41cf.png");
     background-repeat: repeat;
     background-color: #2121218f;
+    height: 100%;
 }
 .wrapper {
     margin: 0 auto;
@@ -163,6 +165,12 @@ input:focus {
     padding: 20px;
     border-radius: var(--border-radius);
 }
+.recap-data span {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
 .table__container {
     width: 100%;
 }
@@ -178,14 +186,14 @@ input:focus {
 .table__title, .form__title {
     margin-bottom: 10px;
 }
-.grid-form {
+.grid-form .form-flex {
     display: grid;
     grid-template-columns: repeat(3, 30%);
     column-gap: 40px;
     row-gap: 15px;
     margin-bottom: 20px;
 }
-.grid-form > div {
+.grid-form .form-flex > div {
     display: flex;
     flex-direction: column;
 }

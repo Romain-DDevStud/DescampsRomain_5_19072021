@@ -3,10 +3,14 @@ main()
 function main() {
     loadProductInCart();
 }
+//création des éléments du panier sous forme de tableau
 function loadProductInCart() {
     let productsInStorage = localStorage.getItem("productsInStorage");
     if (productsInStorage == null) {
         console.log("Pas de produit dans le panier");
+        let sectionForm = document.querySelector(".recap-data");
+        sectionForm.innerHTML = "<span>Votre panier est vide !</span>";
+        return false;
     } else {
         productsInStorage = JSON.parse(productsInStorage);
     }
@@ -64,11 +68,13 @@ function loadProductInCart() {
 }
 // supprimer contenu du panier
 const buttonEmptyCart = document.querySelector(".empty-cart");
-buttonEmptyCart.addEventListener("click", function() {
-    localStorage.clear();
-    alert("Panier vidé avec succès !");
-    history.go(0);
-});
+if (buttonEmptyCart != null) {
+    buttonEmptyCart.addEventListener("click", function() {
+        localStorage.clear();
+        alert("Panier vidé avec succès !");
+        history.go(0);
+    });
+}
 
 //variables pour envoi des infos clients
 let firstName = document.getElementById("firstName");
@@ -76,7 +82,6 @@ let lastName = document.getElementById("lastName");
 let emailAddress = document.getElementById("email");
 let address = document.getElementById("address");
 let city = document.getElementById("city");
-let validInfosButton = document.getElementById("valid-button");
 let confirmButton = document.getElementById("order-confirm");
 
 //fonction pour créer objet général infos clients
@@ -111,23 +116,18 @@ function validInput() {
         alert("Merci d'entrer une ville valide.")
         city.style.borderColor = "red"
     } else {
-        alert("Vous pouvez valider votre commande")
-        validInfosButton.classList.remove("disabled")
+        return true
     }
 }
-
-//event au clic de vérification des coordonnées
-validInfosButton.addEventListener("click", function(event){
-    validInput();
-})
 
 // création d'un tableau contenant le panier de commande 
 let productsInStorage = JSON.parse(localStorage.getItem("productsInStorage"));
 let listCartProduct = [];
-
-for (let i = 0; i < productsInStorage.length; i++) {
-    listCartProduct.push(productsInStorage[i].id);
-}    
+if (productsInStorage != null) {
+    for (let i = 0; i < productsInStorage.length; i++) {
+        listCartProduct.push(productsInStorage[i].id);
+    }
+}        
 
 // fonction pour envoi données client
 function sendInfos() {
@@ -161,15 +161,20 @@ function sendInfos() {
     })
     .then((data) => {
         localStorage.clear();
-        localStorage.setItem("orderInfos", JSON.stringify(data))
-        console.log(confirmButton);
-        window.location.replace(confirmButton.firstElementChild.href);
-    })    
+        localStorage.setItem("orderInfos", JSON.stringify(data));
+        const form = document.getElementById("form-info");
+        window.location.replace(form.action);
+    })  
     .catch((error) => console.log("erreur de type : ", error));
 } 
 
 //event au clic validation commande
-confirmButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    sendInfos();
-})
+if (confirmButton != null) {
+    confirmButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        const valid = validInput();
+        if (valid == true) {
+            sendInfos()
+        }
+    })
+}
